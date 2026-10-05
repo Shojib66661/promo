@@ -57,7 +57,7 @@ CHUNKS = {
     'intro': "Hey *Texas!* | We're out here | on a build site | today in | *Frisco,* Texas",
     'upgrade': "One of the | *upgrades* | that we offer | with the | *Texas Proof Roof,*",
     'hpr': "and this is | *High Profile Ridge.*",
-    'accessory': "So | if you've | ever seen | a *roof,* | the *ridge* | of the roof, | it's just | that piece | that's like | an *accessory.* | It just *really* | *finishes* | off nicely.",
+    'accessory': "So if you've | ever seen | a *roof,* | the *ridge* | of the roof, | it's just | that piece | that's like | an *accessory.* | It just *really* | *finishes* | off nicely.",
     'difference': "One of the | *differences,* | for instance, | is oftentimes | you can kind of | see the *edge* | of the ridge. | With the | *High Profile Ridge,* | you're going to see | a nice | *smooth finish.* | It just gives it | a nice | *finished look.*",
     'lessoften': "If you're looking | to *replace* your roof | *less often,* | that's one of | the things | that we're *known for,* | that we really | *shoot for,* | maybe that really | *sets us apart* | from other *roofers.*",
     'deduct': "With the | *deductibles* | going *up* | and *up,*",
