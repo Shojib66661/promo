@@ -149,6 +149,34 @@ for k in range(total_speech):
         zoom_events.append((k, ZOOMS[zi % len(ZOOMS)]))
         last = k
 
+
+
+def cover_box(k):
+    """Union of the old caption's boxes over +-6 frames (same piece), padded.
+
+    The original captions animate line by line, so a single frame's box can
+    miss a line that appears a moment later; the union keeps it covered.
+    """
+    fr = frames[k]
+    seg = next(s for s in segments if s['id'] == fr['seg'])
+    p = seg['pieces'][fr['piece']]
+    me = held[fr['src']]
+    cands = []
+    for g in range(max(p['srcIn'], fr['src'] - 6), min(p['srcOut'], fr['src'] + 7)):
+        b = boxes[g]
+        if b is None:
+            continue
+        if me is not None and abs((b[1] + b[3]) / 2 - (me[1] + me[3]) / 2) > 170:
+            continue
+        cands.append(b)
+    if me is not None:
+        cands.append(me)
+    if not cands:
+        return None
+    u = [min(b[0] for b in cands), min(b[1] for b in cands), max(b[2] for b in cands), max(b[3] for b in cands)]
+    return [u[0] - 12, u[1] - 16, u[2] + 12, u[3] + 16]
+
+
 frame_rows = []
 ev = 0
 cur = 1.0
@@ -160,7 +188,7 @@ for k, fr in enumerate(frames):
     top = None
     if s:
         top = min(max(fr['src'], s['run'][0]), s['run'][1])
-    frame_rows.append([fr['src'], layout[k][0], held[fr['src']] if fr['src'] < NSRC else None, round(cur, 3), top])
+    frame_rows.append([fr['src'], layout[k][0], cover_box(k), round(cur, 3), top])
 
 data = {
     'fps': FPS,
