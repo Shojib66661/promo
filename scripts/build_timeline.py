@@ -36,10 +36,11 @@ def caption_box(f):
     clusters = []
     for b in sorted(bs, key=lambda b: (b[1] + b[3]) / 2):
         cy = (b[1] + b[3]) / 2
-        if clusters and abs(cy - clusters[-1]['cy']) < 110:
+        if clusters and abs(cy - clusters[-1]['cy']) < 90:
             c = clusters[-1]
             c['b'] = [min(c['b'][0], b[0]), min(c['b'][1], b[1]), max(c['b'][2], b[2]), max(c['b'][3], b[3])]
             c['w'] += b[2] - b[0]
+            c['cy'] = cy  # chain line to line (multi-line captions)
         else:
             clusters.append({'cy': cy, 'b': list(b[:4]), 'w': b[2] - b[0]})
     best = max(clusters, key=lambda c: c['w'])
