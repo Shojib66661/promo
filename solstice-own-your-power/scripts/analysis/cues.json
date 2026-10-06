@@ -1,0 +1,72 @@
+[
+ {
+  "t": 0.0,
+  "sfx": "transition/impact-low",
+  "gain_db": -3
+ },
+ {
+  "t": 1.4,
+  "sfx": "paper/swish-card",
+  "gain_db": 0
+ },
+ {
+  "t": 7.0,
+  "sfx": "transition/whoosh-short",
+  "gain_db": 0
+ },
+ {
+  "t": 8.3,
+  "sfx": "paper/swish-card",
+  "gain_db": 0
+ },
+ {
+  "t": 13.533,
+  "sfx": "ui/ding",
+  "gain_db": -4
+ },
+ {
+  "t": 16.033,
+  "sfx": "ui/pop",
+  "gain_db": 0
+ },
+ {
+  "t": 21.267,
+  "sfx": "paper/marker-scribble",
+  "gain_db": -2
+ },
+ {
+  "t": 24.733,
+  "sfx": "transition/impact-low",
+  "gain_db": -3
+ },
+ {
+  "t": 28.4,
+  "sfx": "paper/stamp-thud",
+  "gain_db": 0
+ },
+ {
+  "t": 33.1,
+  "sfx": "paper/swish-card",
+  "gain_db": 0
+ },
+ {
+  "t": 35.133,
+  "sfx": "transition/whoosh-short",
+  "gain_db": 0
+ },
+ {
+  "t": 40.567,
+  "sfx": "paper/swish-card",
+  "gain_db": 0
+ },
+ {
+  "t": 43.633,
+  "sfx": "ui/ding",
+  "gain_db": -4
+ },
+ {
+  "t": 47.167,
+  "sfx": "transition/impact-low",
+  "gain_db": 0
+ }
+]

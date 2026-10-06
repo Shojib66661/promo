@@ -1,5 +1,5 @@
-node_modules/
-out/
-.DS_Store
-*.log
-__pycache__/
+# regenerable media (scripts/reframe.py, tools/segment_person.py, edl checks)
+public/video/
+scripts/analysis/seg/
+scripts/analysis/pieces/
+scripts/analysis/music.wav

@@ -6,7 +6,7 @@ import path from 'node:path';
 const frames = process.argv.slice(2).map(Number);
 const serveUrl = await bundle({entryPoint: path.resolve('src/index.ts')});
 const browserExecutable = process.env.REMOTION_BROWSER ?? null;
-const composition = await selectComposition({serveUrl, id: 'AtticVents', browserExecutable});
+const composition = await selectComposition({serveUrl, id: 'OwnYourPower', browserExecutable});
 for (const frame of frames) {
 	await renderStill({composition, serveUrl, frame, output: `${process.env.OUTDIR ?? 'out/stills'}/f${String(frame).padStart(4, '0')}.png`, browserExecutable, scale: 0.5});
 	console.log('frame', frame);

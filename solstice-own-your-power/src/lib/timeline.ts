@@ -67,9 +67,9 @@ export const shotEnd = (shot: number) => {
 	return last + 1;
 };
 
-/** Source (720x1280) -> output (1080x1920) mapping. Zoom is about source (360, 560). */
+/** Source (1080x1920 reframe) -> output mapping. Zoom is about source ORIGIN (upper chest). */
 export const SRC_SCALE = TL.width / TL.srcWidth;
-export const ORIGIN = {x: 360, y: 560};
+export const ORIGIN = {x: TL.srcWidth / 2, y: TL.srcHeight * 0.4375};
 
 export const toScreen = (x: number, y: number, zoom: number) => ({
 	x: TL.width / 2 + (x - ORIGIN.x) * SRC_SCALE * zoom,

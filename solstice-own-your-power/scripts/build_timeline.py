@@ -1,8 +1,8 @@
 """Builds src/data/timeline.json from the EDL + analysis data.
 
-Per OUTPUT frame: source frame, source shot index, the box of the ORIGINAL
-burned-in caption (it was inpainted away; our caption + glow sits over the
-leftover smear), and camera zoom. Plus caption chunks with word timings.
+Per OUTPUT frame: source frame, source shot index, the box of the original
+burned-in caption (always null here: the source had none) and camera zoom.
+Plus caption chunks with word timings.
 """
 import json, os, re
 from edl import FPS, SEGMENTS, END_CARD_FRAMES, CHUNKS, WORD_FIXES, SHOTS, DISPLAY
@@ -19,17 +19,9 @@ for w in words:
             break
 words.sort(key=lambda w: w['s'])
 
-raw = json.load(open(os.path.join(A, 'capboxes.json')))
-NSRC = len(raw)
-band = [[b for b in bs if 670 <= (b[1] + b[3]) / 2 <= 760 and 14 <= b[3] - b[1] <= 60] for bs in raw]
-
-
 def cover_box(f):
-    """Same region the inpainter cleaned: union of caption boxes over +-3 frames."""
-    c = [b for g in range(max(0, f - 3), min(NSRC, f + 4)) for b in band[g]]
-    if not c:
-        return None
-    return [min(b[0] for b in c) - 10, min(b[1] for b in c) - 10, max(b[2] for b in c) + 10, max(b[3] for b in c) + 12]
+    """The source has no burned-in captions, so there is nothing to cover."""
+    return None
 
 
 def shot_of(f):
@@ -98,8 +90,13 @@ chunks_out[-1]['end'] = out
 total_speech = out
 total = out + END_CARD_FRAMES
 
-# ---- zoom plan: one value per piece (punch-ins hide the two jump cuts) -------
-PIECE_ZOOM = {('under', 0): 1.0, ('under', 1): 1.16, ('under', 2): 1.32}
+# ---- zoom plan: one value per piece; alternate punch-ins hide every jump cut --
+ZOOMS = [1.0, 1.09]
+piece_ids = []
+for sid, pieces in SEGMENTS:
+    for k in range(len(pieces)):
+        piece_ids.append((sid, k))
+PIECE_ZOOM = {pid: ZOOMS[i % 2] for i, pid in enumerate(piece_ids)}
 frame_rows = []
 for k, fr in enumerate(frames):
     z = PIECE_ZOOM.get((fr['seg'], fr['piece']), 1.0)
@@ -109,8 +106,8 @@ data = {
     'fps': FPS,
     'width': 1080,
     'height': 1920,
-    'srcWidth': 720,
-    'srcHeight': 1280,
+    'srcWidth': 1080,
+    'srcHeight': 1920,
     'totalFrames': total,
     'speechFrames': total_speech,
     'endCardStart': total_speech,

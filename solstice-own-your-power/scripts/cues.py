@@ -1,6 +1,7 @@
-"""SFX cue sheet keyed to words (same beats as AtticVents.tsx) -> scripts/analysis/cues.json.
+"""SFX cue sheet keyed to words (same beats as OwnYourPower.tsx) -> scripts/analysis/cues.json.
 
-Kept subtle per the audio rules: key moments only, ~1 every 3 s.
+Kept subtle per the audio rules: key moments only, ~1 every 3-4 s. SFX are kit
+library ids (resolved by tools/mix_audio.py under --sfx-root, i.e. ~/kit).
 usage: python3 scripts/cues.py
 """
 import json, os, re
@@ -24,24 +25,24 @@ def W(seg, word, nth=0):
     raise SystemExit(f'no {word} in {seg}')
 
 
-seg = {s['id']: s for s in TL['segments']}
 end = TL['endCardStart']
-SFX = 'public/sfx/'
 CUES = [
-    (0, 'impact-low', -3),                       # hook: B&W world + star
-    (20, 'swish-card', 0),                       # rotting-wood print slaps on
-    (W('myth', 'not.') - 2, 'stamp-thud', 0),    # "the shingles?" crossed out
-    (W('under', 'underneath') - 2, 'whoosh-short', 0),
-    (W('attic', 'attic'), 'swish-card', 0),      # attic diagram
-    (W('damage', 'mold,'), 'pop', 0),            # damage cards
-    (W('damage', 'lifespan'), 'pop', 0),
-    (W('solar', 'solar'), 'ding', -4),
-    (W('hydro', "don't") - 2, 'whoosh-short', 0),
-    (W('protect', 'Protect'), 'stamp-thud', 0),  # shield
-    (end, 'impact-low', 0),                      # end card
-    (end + 4, 'swish-card', 0),
+    (0, 'transition/impact-low', -3),                 # hook: B&W print + star + "Rising"
+    (W('hook', 'utility'), 'paper/swish-card', 0),     # utility tower
+    (W('own', 'to', 1) - 2, 'transition/whoosh-short', 0),  # print mode "Power"
+    (W('behind', 'Behind'), 'paper/swish-card', 0),    # photo print of the system
+    (W('behind', 'Solstice'), 'ui/ding', -4),          # logo card
+    (W('yes', 'yes,'), 'ui/pop', 0),                   # check badge
+    (W('easy', 'easy.'), 'paper/marker-scribble', -2), # last tick
+    (W('phone', '27') - 2, 'transition/impact-low', -3),  # "27 minutes" + star
+    (W('phone', 'running.'), 'paper/stamp-thud', 0),   # UP & RUNNING
+    (W('licensed', 'licensed'), 'paper/swish-card', 0),  # shield
+    (W('licensed', 'here'), 'transition/whoosh-short', 0),  # print mode "Texas"
+    (W('setup', 'setup'), 'paper/swish-card', 0),      # system print
+    (W('call', '832-721-2339.') - 2, 'ui/ding', -4),   # phone pill
+    (end, 'transition/impact-low', 0),                 # end card
 ]
-out = [{'t': round(f / FPS, 3), 'sfx': os.path.join(HERE, '..', SFX + name + '.wav'), 'gain_db': g} for f, name, g in CUES]
+out = [{'t': round(f / FPS, 3), 'sfx': name, 'gain_db': g} for f, name, g in CUES]
 json.dump(out, open(os.path.join(HERE, 'analysis', 'cues.json'), 'w'), indent=1)
 for c, (f, name, g) in zip(out, CUES):
     print(f"{c['t']:6.2f}s  f{f:4d}  {name} {g:+d} dB")

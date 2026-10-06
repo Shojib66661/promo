@@ -1,7 +1,7 @@
 import React from 'react';
 import {Composition, staticFile} from 'remotion';
 import {loadFont} from '@remotion/fonts';
-import {AtticVents} from './AtticVents';
+import {OwnYourPower} from './OwnYourPower';
 import {TL} from './lib/timeline';
 
 const fonts: Array<[string, string, string?]> = [
@@ -11,13 +11,15 @@ const fonts: Array<[string, string, string?]> = [
 	['Playfair Italic', 'fonts/PlayfairItalic800.woff2'],
 	['Playfair Italic Mid', 'fonts/PlayfairItalic600.woff2'],
 	['Caveat Brush', 'fonts/CaveatBrush.woff2'],
+	['Oswald', 'fonts/Oswald700.woff2', '700'],
+	['Oswald', 'fonts/Oswald600.woff2', '600'],
 ];
 for (const [family, file, weight] of fonts) loadFont({family, url: staticFile(file), weight});
 
 export const RemotionRoot: React.FC = () => (
 	<Composition
-		id="AtticVents"
-		component={AtticVents}
+		id="OwnYourPower"
+		component={OwnYourPower}
 		durationInFrames={TL.totalFrames}
 		fps={TL.fps}
 		width={TL.width}

@@ -7,10 +7,9 @@ const clean = (t: string) => t.replace(/[.,]+$/, '');
 
 /**
  * Mixed-media caption (after the reference): small white sans words with one
- * hero word in a big italic serif. Words appear as they are spoken.
- *
- * The old burned-in caption was inpainted away, but a soft smear stays on that
- * strip, so this caption always sits on it with a dark glow (`glow` box, screen px).
+ * hero word in a big italic serif. Words appear as they are spoken (layout is
+ * reserved, so nothing reflows). A light dark glow (`glow` box, screen px) keeps
+ * it readable over his face and blue shirt.
  */
 export const MixedCaption: React.FC<{
 	chunk: Chunk;
@@ -22,7 +21,7 @@ export const MixedCaption: React.FC<{
 	hideHero?: boolean;
 	showAll?: boolean;
 	heroColor?: string;
-}> = ({chunk, index, frame, cx, cy, glow, hideHero, showAll, heroColor = C.limeHi}) => {
+}> = ({chunk, index, frame, cx, cy, glow, hideHero, showAll, heroColor = C.cyanHi}) => {
 	const rot = wob(`cap${index}`, frame, 0.6, 4);
 	const words = hideHero ? chunk.words.filter((w) => !w.emph) : chunk.words;
 	return (
@@ -35,7 +34,7 @@ export const MixedCaption: React.FC<{
 						top: glow.y0 - 70,
 						width: glow.x1 - glow.x0 + 220,
 						height: glow.y1 - glow.y0 + 140,
-						background: 'radial-gradient(ellipse at center, rgba(6,24,43,0.5) 0%, rgba(6,24,43,0.4) 50%, rgba(6,24,43,0) 72%)',
+						background: 'radial-gradient(ellipse at center, rgba(6,24,43,0.34) 0%, rgba(6,24,43,0.24) 50%, rgba(6,24,43,0) 72%)',
 						filter: 'blur(8px)',
 					}}
 				/>
@@ -57,12 +56,12 @@ export const MixedCaption: React.FC<{
 			>
 				{words.map((w, i) => {
 					const local = frame - w.f;
-					// upcoming words show dimmed (keeps the cleaned strip covered), then pop when spoken
+					// upcoming words are hidden (space reserved), then pop when spoken
 					const spoken = showAll || local >= -1;
 					const s = spoken ? (showAll ? 1 : Math.max(0.85, pop(local + 1))) : 1;
 					const common: React.CSSProperties = {
 						display: 'inline-block',
-						opacity: spoken ? 1 : 0.42,
+						opacity: spoken ? 1 : 0,
 						transform: `scale(${s})`,
 						transformOrigin: '50% 80%',
 					};

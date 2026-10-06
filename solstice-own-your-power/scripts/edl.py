@@ -1,57 +1,62 @@
-"""Edit decision list for the 4SEASONS "rotting roof / attic" reel.
+"""Edit decision list for the Solstice Solar "own your power" reel.
 
-Times are SOURCE frames (source.mp4, 30 fps, 26.7 s). The original edit was
-already tight, so the talk keeps its order; we only tighten two slow pauses
-("damage ... starts ... underneath") and drop the closing "And follow us for
-more roofing tips." (it pointed at the speaker's account, not @4seasonsvents).
-Cut points sit in real silences of the isolated vocal stem.
+Times are SOURCE frames (public/video/source.mp4 = the 9:16 reframe of the
+1216x718 landscape take, 30 fps, 57 s, one continuous shot).
+Approved plan: open on "Delivery charges..." (drop "Here's something I'll bet
+you didn't know. Solar is getting more and more popular because"), keep every
+other line in order, only tighten the pauses. Cut points sit in real silences
+of the isolated vocal stem (< -60 dB), ~0.1 s kept on each side.
 """
 
 FPS = 30
 
 SEGMENTS = [
-    # "Your roof could be rotting and you wouldn't even know it."
-    ('hook', [(0, 64)]),
-    # "Most homeowners think the shingles are the biggest problem, but they're not."
-    ('myth', [(64, 158)]),
-    # "The real damage starts underneath your shingles."   (pauses 6.40-6.50, 7.13-7.37 removed)
-    ('under', [(158, 192), (195, 214), (221, 262)]),
-    # "When your attic traps heat and moisture,"
-    ('attic', [(262, 325)]),
-    # "it can build mold, damage your wood and shorten the lifespan of your roof."
-    ('damage', [(325, 450)]),
-    # "That's why we install solar power vents,"
-    ('solar', [(450, 516)]),
-    # "which always keep pulling out hot air out of your attic"
-    ('pull', [(516, 612)]),
-    # "and don't increase your hydro bill."
-    ('hydro', [(612, 662)]),
-    # "Protect your roof before you have to replace it."
-    ('protect', [(662, 740)]),
+    # "Delivery charges from the utility companies are rising and we all have no control over that."
+    ('hook', [(134, 282)]),
+    # "So what are homeowners looking to do? They're looking to own their power."
+    ('own', [(294, 392)]),
+    # "Behind me is an EG4 system where this homeowner bought all of the equipment and then
+    #  reached out to us here at Solstice Solar to install it for them."
+    ('behind', [(405, 616)]),
+    # "Of course we said yes, no problem."
+    ('yes', [(624, 682)]),
+    # "After the full installation was done, | the commissioning was very, very easy."  (1.1 s pause cut)
+    ('easy', [(701, 767), (794, 864)]),
+    # "We showed up, got on the phone with EG4 support, | and in 27 minutes, this system was
+    #  operational up and running."
+    ('phone', [(879, 962), (972, 1102)]),
+    # "If you're looking for solutions and want to talk to a reputable company. We are licensed
+    #  and registered with the state here in Texas"
+    ('licensed', [(1112, 1330)]),
+    # "and I'd be more than happy to help make sure you get the information you need"
+    ('happy', [(1337, 1442)]),
+    # "and if this is the type of setup you're looking for, we can get you squared away."
+    ('setup', [(1447, 1546)]),
+    # "Give us a call 832-721-2339."
+    ('call', [(1554, 1683)]),
 ]
 
-END_CARD_FRAMES = 84  # 2.8 s CTA after the last line
+END_CARD_FRAMES = 90  # 3 s; the phone CTA already builds over the last line
 
-# Shot boundaries in the source (scene detection), used for zoom + looks.
-SHOTS = [0, 38, 64, 105, 143, 158, 262, 355, 450, 487, 516, 585, 662, 741]
+# One continuous take: no scene cuts.
+SHOTS = [0]
 
 # Caption chunks per segment ("|" = new chunk, *word* = hero word in big serif italic).
 CHUNKS = {
-    'hook': "Your roof could be *rotting* | and you wouldn't | even *know* it.",
-    'myth': "Most *homeowners* | think the *shingles* | are the biggest | *problem,* | but they're *not.*",
-    'under': "The *real* damage | starts | *underneath* | your shingles.",
-    'attic': "When your *attic* | traps *heat* | and *moisture,*",
-    'damage': "it can | build *mold,* | damage | your *wood* | and shorter | the *lifespan* | of your roof.",
-    'solar': "That's why | we install | *solar* | power vents,",
-    'pull': "which *always* | keep pulling | out *hot air* | out of | your *attic*",
-    'hydro': "and don't | *increase* | your *hydro bill.*",
-    'protect': "*Protect* | your roof | before you | have to | *replace* it.",
+    'hook': "*Delivery* *charges* | from the | *utility* companies | are *rising* | and we all | have *no control* | over that.",
+    'own': "So what are | *homeowners* | looking to do? | They're looking | to *own* | their *power.*",
+    'behind': "Behind me | is an *EG4* system | where this | homeowner | *bought* all | of the *equipment* | and then | reached out to us | here at | *Solstice Solar* | to install it | for them.",
+    'yes': "Of course | we said *yes,* | no problem.",
+    'easy': "After the | *fully* installation | was done, | the *commissioning* | was very, | very *easy.*",
+    'phone': "We showed up, | got on the *phone* | with EG4 support, | and in | *27 minutes,* | this system | was *operational* | up and *running.*",
+    'licensed': "If you're looking | for *solutions* | and want to talk | to a *reputable* | company. | We are *licensed* | and *registered* | with the state | here in *Texas*",
+    'happy': "and I'd be | more than *happy* | to help | make sure | you get the | *information* | you need",
+    'setup': "and if this is | the type of *setup* | you're looking for, | we can get you | *squared away.*",
+    'call': "Give us a *call* | *832-721-2339.*",
 }
 
-# Display-only wording fixes (approved): audio says "shorter", caption reads "shorten".
-DISPLAY = {'shorter': 'shorten'}
+# Display-only wording fixes (approved): audio says "fully installation".
+DISPLAY = {'fully': 'full'}
 
 # Word start corrections in source seconds: (word, approx aligned time) -> time.
-WORD_FIXES = {
-    ('bill.', 21.52): 21.80,
-}
+WORD_FIXES = {}

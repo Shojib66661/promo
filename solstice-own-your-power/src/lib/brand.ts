@@ -1,18 +1,18 @@
 import {random} from 'remotion';
 
-/** 4SEASONS brand (sampled from their profile logo + wordmark) + a few accents. */
+/** Solstice Solar brand (sampled from their profile logo: cyan #01a3e7) + a few accents. */
 export const C = {
-	navy: '#0b2642',
-	navyDeep: '#06182b',
-	lime: '#aacd4f',
-	limeHi: '#c8ec62', // brighter lime for text on video
+	cyan: '#01a3e7',
+	cyanHi: '#3cc8ff', // brighter cyan for text on video
+	navy: '#0a2540',
+	navyDeep: '#061a2e',
 	white: '#fbfbf6',
 	ink: '#101418',
-	heat: '#ff8a3d',
-	water: '#5fb8ff',
+	sun: '#ffc93c',
 	warn: '#e2483d',
-	mold: '#7f8f5a',
-	wood: '#b9824f',
+	go: '#35d07f', // "up and running" green (the EG4 status LEDs)
+	grey: '#c9d1d8',
+	kraft: '#c9a774',
 };
 
 export const FONT = {
@@ -21,6 +21,7 @@ export const FONT = {
 	serif: 'Playfair Italic',
 	serifMid: 'Playfair Italic Mid',
 	hand: 'Caveat Brush',
+	cond: 'Oswald',
 };
 
 /** Thick sticker outline around a transparent element (stacked hard drop-shadows). */
