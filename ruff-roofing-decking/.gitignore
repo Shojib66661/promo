@@ -1,0 +1,9 @@
+node_modules/
+out/
+.DS_Store
+*.log
+__pycache__/
+public/video/
+scripts/analysis/seg/
+scripts/analysis/cleantest/
+scripts/analysis/*.wav

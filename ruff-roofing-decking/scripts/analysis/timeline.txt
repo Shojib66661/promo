@@ -1,0 +1,68 @@
+total 1481 frames (49.37s), speech 1421, chunks 58
+  hook        0- 116  (3.87s)
+  intro     116- 350  (7.80s)
+  holes     350- 522  (5.73s)
+  repair    522- 665  (4.77s)
+  sheet     665- 738  (2.43s)
+  inspect   738- 939  (6.70s)
+  save      939- 990  (1.70s)
+  after     990-1240  (8.33s)
+  cta      1240-1421  (6.03s)
+       0-   9 We@1 have@6
+       9-  25 *extensive@11
+      25-  47 water@27 damage@35
+      47-  68 right@49 here.@58
+      68-  93 It's@70 been@78 *leaking@84
+      93- 116 for@95 a@101 while,@105
+     116- 144 What's@116 up@116 guys?@130
+     144- 157 This@146 is@150 *Dre@153
+     157- 176 with@159 Ruff@164 Roofing.@170
+     176- 192 I@178 want@182 to@186 give@188 you@192
+     192- 211 a@194 quick@196 *example@202
+     211- 241 of@213 what@217 it@222 looks@226 like@235
+     241- 270 when@243 you@249 have@258
+     270- 314 very@272 *damaged@282 decking,@297
+     314- 350 and@316 *water@326 damages.@338
+     350- 384 We@350 have@351 a@356 couple@358 *holes.@369
+     384- 406 It's@386 a@395 roof@400
+     406- 447 that's@408 *pretty@418 *old@431
+     447- 480 and@449 over@461 time@476
+     480- 496 you@482 start@485 to@492 have@495
+     496- 522 these@498 *complications.@502
+     522- 538 You@522 want@528 to@532 get@536
+     538- 562 these@540 things@545 *repaired.@552
+     562- 571 If@564 not,@568
+     571- 596 you@573 start@580 having@586
+     596- 630 very@598 *expensive@610
+     630- 665 internal@632 damages,@648
+     665- 682 considering@665
+     682- 708 your@684 *sheetrock,@689
+     708- 738 your@710 *rafters.@717
+     738- 764 Do@738 a@743 full@746 *inspection@752
+     764- 781 while@766 we're@771 here.@777
+     781- 800 Make@783 sure@790 that@795 we@798
+     800- 820 take@802 care@808 of@814 all@818
+     820- 854 the@822 *problematic@826 areas@845
+     854- 873 to@856 make@860 sure@866 that@873
+     873- 889 you@875 don't@879 have@886
+     889- 907 any@891 *problems@897
+     907- 939 in@909 the@914 future,@917
+     939- 956 saving@939 you@952
+     956- 968 *thousands@958
+     968- 990 of@970 dollars.@974
+     990-1006 After@990 we@999 do@1005
+    1006-1028 our@1008 *inspection@1013
+    1028-1069 we@1030 start@1035 *repairing@1049
+    1069-1100 all@1071 the@1077 necessary@1082
+    1100-1113 damages@1102
+    1113-1141 to@1115 make@1120 sure@1126 that@1137
+    1141-1172 you@1143 guys@1146 can@1146 be@1168
+    1172-1206 good@1174 to@1180 go@1186
+    1206-1240 for@1208 *years@1216 on@1227 end.@1232
+    1240-1274 Shoot@1241 us@1253 a@1258 *call,@1263
+    1274-1300 click@1276 the@1286 *link,@1290
+    1300-1336 send@1302 us@1311 a@1316 *text,@1319
+    1336-1347 show@1338 up@1338
+    1347-1377 to@1349 the@1353 *office.@1358
+    1377-1395 We'll@1379 get@1388 you@1392
+    1395-1421 taken@1397 care@1407 of.@1416

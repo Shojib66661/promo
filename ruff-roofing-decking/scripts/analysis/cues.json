@@ -1,0 +1,77 @@
+[
+ {
+  "t": 0.0,
+  "sfx": "/root/kit/sfx/transition/impact-low.wav",
+  "gain_db": -3
+ },
+ {
+  "t": 2.8,
+  "sfx": "/root/kit/sfx/ui/pop.wav",
+  "gain_db": -2
+ },
+ {
+  "t": 3.867,
+  "sfx": "/root/kit/sfx/transition/whoosh-short.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 5.1,
+  "sfx": "/root/kit/sfx/paper/swish-card.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 8.8,
+  "sfx": "/root/kit/sfx/paper/swish-card-long.wav",
+  "gain_db": -3
+ },
+ {
+  "t": 12.867,
+  "sfx": "/root/kit/sfx/transition/whoosh-short.wav",
+  "gain_db": -2
+ },
+ {
+  "t": 20.333,
+  "sfx": "/root/kit/sfx/ui/pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 22.967,
+  "sfx": "/root/kit/sfx/ui/pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 24.6,
+  "sfx": "/root/kit/sfx/transition/whoosh-short.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 27.533,
+  "sfx": "/root/kit/sfx/paper/marker-scribble.wav",
+  "gain_db": -2
+ },
+ {
+  "t": 31.9,
+  "sfx": "/root/kit/sfx/ui/ding.wav",
+  "gain_db": -4
+ },
+ {
+  "t": 39.133,
+  "sfx": "/root/kit/sfx/paper/stamp-thud.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 41.333,
+  "sfx": "/root/kit/sfx/transition/whoosh-short.wav",
+  "gain_db": -2
+ },
+ {
+  "t": 45.9,
+  "sfx": "/root/kit/sfx/transition/impact-low.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 46.1,
+  "sfx": "/root/kit/sfx/paper/swish-card.wav",
+  "gain_db": 0
+ }
+]
