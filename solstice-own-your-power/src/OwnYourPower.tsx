@@ -3,7 +3,7 @@ import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import {TL, chunkIndexAt, row, segment, wordFrame, zoomAt} from './lib/timeline';
 import {C, outline, wob} from './lib/brand';
 import {SrcFrame} from './components/Source';
-import {Camera, PrintPlane} from './components/Camera';
+import {Camera, PrintPlane, toPrint} from './components/Camera';
 import {MixedCaption} from './components/Caption';
 import {
 	Battery,
@@ -76,10 +76,10 @@ const inRange = (f: number, a: number, b: number) => f >= a && f < b;
 
 /** Print-mode moments: B&W print, colour cutout with a cyan outline, word behind his head. */
 const BW = [
-	{a: 0, b: BEATS.have, word: 'Rising', y: 360, size: 300, local0: -20, star: true},
-	{a: BEATS.to, b: SEG.own.end, word: 'Power', y: 360, size: 300, local0: 0, star: false},
-	{a: BEATS.n27 - 2, b: BEATS.operational - 6, word: '27 minutes', y: 380, size: 196, local0: 0, star: true},
-	{a: BEATS.here, b: SEG.happy.start + 18, word: 'Texas', y: 360, size: 300, local0: 0, star: false},
+	{a: 0, b: BEATS.have, word: 'Rising', y: 400, size: 290, local0: -20, star: true},
+	{a: BEATS.to, b: SEG.own.end, word: 'Power', y: 345, size: 300, local0: 0, star: false},
+	{a: BEATS.n27 - 2, b: BEATS.operational - 6, word: '27 minutes', y: 350, size: 180, local0: 0, star: true},
+	{a: BEATS.here, b: SEG.happy.start + 18, word: 'Texas', y: 400, size: 300, local0: 0, star: false},
 ];
 
 const CAP_Y = 1430;
@@ -105,7 +105,7 @@ export const OwnYourPower: React.FC = () => {
 						<SrcFrame frame={src} style={{filter: 'grayscale(1) contrast(1.3) brightness(1.05)'}} />
 					</Camera>
 				</PrintPlane>
-				{bw.star ? <StarBurst x={540} y={980} r={470} local={f - bw.a - bw.local0} frame={f} color={C.cyan} edge={C.white} /> : null}
+				{bw.star ? <StarBurst x={540} y={1000} r={480} local={f - bw.a - bw.local0} frame={f} color={C.cyan} edge={C.white} /> : null}
 				<BehindWord text={bw.word} x={540} y={bw.y} size={bw.size} local={f - bw.a - bw.local0} frame={f} />
 				<PrintPlane style={{filter: outline(C.cyan, 6)}}>
 					<Camera zoom={zoom}>
@@ -113,8 +113,9 @@ export const OwnYourPower: React.FC = () => {
 					</Camera>
 				</PrintPlane>
 				{/* masking tape on the print */}
-				<div style={{position: 'absolute', left: 120, top: 150, width: 190, height: 52, background: 'rgba(232,226,200,0.85)', transform: 'rotate(-38deg)'}} />
-				<div style={{position: 'absolute', left: 790, top: 1600, width: 190, height: 52, background: 'rgba(232,226,200,0.85)', transform: 'rotate(-30deg)'}} />
+				{[toPrint(0, 0), toPrint(1080, 1920)].map((p, i) => (
+					<div key={i} style={{position: 'absolute', left: p.x - 95, top: p.y - 26, width: 190, height: 52, background: 'rgba(232,226,200,0.85)', transform: `rotate(${i ? -40 : -40}deg)`}} />
+				))}
 			</AbsoluteFill>
 		) : (
 			<AbsoluteFill>
@@ -131,14 +132,14 @@ export const OwnYourPower: React.FC = () => {
 	// hook: bill (on screen from frame 0 for the thumbnail) + utility tower
 	if (inRange(f, 0, seg('hook').end)) {
 		fx.push(
-			<Sticker key="bill" x={250} y={1060} local={f + 10} rot={-8} seed="bill" frame={f}>
+			<Sticker key="bill" x={190} y={1150} local={f + 10} rot={-8} seed="bill" frame={f} scale={0.78}>
 				<UtilityBill rise={f - BEATS.rising} frame={f} />
 			</Sticker>,
 		);
 	}
 	if (inRange(f, BEATS.utility, seg('hook').end)) {
 		fx.push(
-			<Sticker key="tower" x={880} y={1010} local={f - BEATS.utility} rot={6} seed="tower" frame={f}>
+			<Sticker key="tower" x={890} y={1080} local={f - BEATS.utility} rot={6} seed="tower" frame={f}>
 				<PowerTower size={210} />
 			</Sticker>,
 		);
@@ -160,7 +161,7 @@ export const OwnYourPower: React.FC = () => {
 	}
 	if (inRange(f, BEATS.power - 4, SEG.own.end)) {
 		fx.push(
-			<Sticker key="sun" x={860} y={1060} local={f - BEATS.power + 4} rot={8} seed="sun" frame={f}>
+			<Sticker key="sun" x={880} y={1110} local={f - BEATS.power + 4} rot={8} seed="sun" frame={f}>
 				<Sun size={230} frame={f} />
 			</Sticker>,
 		);
@@ -233,7 +234,7 @@ export const OwnYourPower: React.FC = () => {
 	}
 	if (inRange(f, BEATS.n27 + 4, BEATS.operational - 6)) {
 		fx.push(
-			<Sticker key="watch" x={190} y={1060} local={f - BEATS.n27 - 4} rot={-8} seed="watch" frame={f}>
+			<Sticker key="watch" x={180} y={1120} local={f - BEATS.n27 - 4} rot={-8} seed="watch" frame={f}>
 				<Stopwatch size={220} frame={f} />
 			</Sticker>,
 		);
@@ -262,7 +263,7 @@ export const OwnYourPower: React.FC = () => {
 	}
 	if (inRange(f, BEATS.texas, SEG.happy.start + 18)) {
 		fx.push(
-			<Sticker key="tx" x={850} y={1080} local={f - BEATS.texas} rot={-6} seed="tx" frame={f}>
+			<Sticker key="tx" x={880} y={1120} local={f - BEATS.texas} rot={-6} seed="tx" frame={f}>
 				<TexasShape w={260} pin={f - BEATS.texas - 5} />
 			</Sticker>,
 		);

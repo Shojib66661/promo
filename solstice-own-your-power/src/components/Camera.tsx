@@ -29,7 +29,7 @@ export const Camera: React.FC<{zoom: number; children: React.ReactNode; style?: 
  * photo print on the navy backdrop. Every layer inside uses the same transform, so
  * the colour cutout lines up with the B&W print.
  */
-export const PRINT = {scale: 0.8, cx: 540, cy: 900, rot: -2};
+export const PRINT = {scale: 0.7, cx: 540, cy: 960, rot: -2};
 export const PrintPlane: React.FC<{children: React.ReactNode; style?: React.CSSProperties; border?: boolean}> = ({children, style, border}) => (
 	<div
 		style={{
