@@ -1,0 +1,26 @@
+{
+  "name": "infinite-roofing-big-homes-reel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mixed-media Remotion edit of the Infinite Roofing (@dallasmavsroofer) \"big homes\" reel",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render BigHomes out/bighomes_raw.mp4 --muted",
+    "still": "remotion still BigHomes out/still.png"
+  },
+  "dependencies": {
+    "@fontsource/caveat-brush": "^5.3.0",
+    "@fontsource/montserrat": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "@remotion/cli": "4.0.533",
+    "@remotion/fonts": "^4.0.533",
+    "@remotion/media-utils": "4.0.533",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "typescript": "^5.4.0"
+  }
+}

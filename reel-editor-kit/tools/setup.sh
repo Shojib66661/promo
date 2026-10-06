@@ -5,12 +5,15 @@
 set -euo pipefail
 M=${MODELS_DIR:-$HOME/models}
 mkdir -p "$M"
-pip install -q sherpa-onnx onnxruntime opencv-python-headless numpy pillow soundfile pyloudnorm "audio-separator[cpu]"
+pip install -q audioread sherpa-onnx onnxruntime opencv-python-headless numpy pillow soundfile pyloudnorm "audio-separator[cpu]"
 cd "$M"
 get() { [ -f "$2" ] || curl -sSL -o "$2" "$1"; }
 # speech-to-text (whisper = accurate text, zipformer = token timestamps, silero = VAD)
+# (download to a file first: streaming into tar died mid-transfer once; -C - resumes)
 for m in sherpa-onnx-whisper-small.en sherpa-onnx-zipformer-en-2023-06-26; do
-  [ -d "$m" ] || { curl -sSL "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/$m.tar.bz2" | tar xj; }
+  [ -d "$m" ] && continue
+  for i in 1 2 3 4 5 6; do curl -sSL -C - -o "$m.tar.bz2" "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/$m.tar.bz2" && break; sleep $((i * 2)); done
+  tar xjf "$m.tar.bz2" && rm "$m.tar.bz2"
 done
 get https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx silero_vad.onnx
 # person segmentation (cutouts / text-behind-subject)

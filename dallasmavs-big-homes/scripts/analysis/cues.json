@@ -1,0 +1,72 @@
+[
+ {
+  "t": 0.0,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/transition_impact-low.wav",
+  "gain_db": -3
+ },
+ {
+  "t": 0.467,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/ui_pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 4.6,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/transition_whoosh-short.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 7.433,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/paper_swish-card.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 9.633,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/paper_stamp-thud.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 13.667,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/ui_pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 19.467,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/ui_pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 23.067,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/paper_marker-scribble.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 24.867,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/paper_swish-card.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 29.867,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/ui_ding.wav",
+  "gain_db": -4
+ },
+ {
+  "t": 31.667,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/transition_whoosh-short.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 33.7,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/paper_swish-card.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 35.967,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/transition_impact-low.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 36.967,
+  "sfx": "/home/user/promo/dallasmavs-big-homes/public/sfx/paper_swish-card.wav",
+  "gain_db": 0
+ }
+]
