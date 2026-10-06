@@ -1,0 +1,62 @@
+[
+ {
+  "t": 0.0,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/impact-low.wav",
+  "gain_db": -3
+ },
+ {
+  "t": 0.667,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/swish-card.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 5.0,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/stamp-thud.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 6.967,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/whoosh-short.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 8.667,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/swish-card.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 11.6,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 13.5,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/pop.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 15.667,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/ding.wav",
+  "gain_db": -4
+ },
+ {
+  "t": 20.267,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/whoosh-short.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 21.733,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/stamp-thud.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 24.333,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/impact-low.wav",
+  "gain_db": 0
+ },
+ {
+  "t": 24.467,
+  "sfx": "/home/user/promo/4seasons-attic-vents/scripts/../public/sfx/swish-card.wav",
+  "gain_db": 0
+ }
+]
