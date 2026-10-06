@@ -25,6 +25,10 @@
 - Client site (infiniteroofing.com) blocked (403): took the real Mavs | Infinite lockup from their
   own end card frame (white background, upscaled 3x) instead of redrawing it.
 - Render speed this time: ~1210 frames in ~9 min at concurrency 4 (lighter look than paper-cut).
+- The user's track came back 65 s (asked 44 s) with a short vocal phrase twice. Check every track:
+  whisper on the separated vocal stem per suspicious second (a full-mix whisper said "music").
+  Fix: use the UVR instrumental stem; pick the start on a strong beat so the track's own final
+  hit lands where the voice ends (here start 22.37 s → hit at 38.65 s, voice ends 38.7 s).
 - User preferences learned: OK with re-ordering for a stat hook; "no preference" on cuts = take the
   full proposed plan; keep claims exactly as said even if they could read oddly.
 
