@@ -29,6 +29,12 @@
   whisper on the separated vocal stem per suspicious second (a full-mix whisper said "music").
   Fix: use the UVR instrumental stem; pick the start on a strong beat so the track's own final
   hit lands where the voice ends (here start 22.37 s → hit at 38.65 s, voice ends 38.7 s).
+- **User rejected the caption labels** ("it looks very bad"): navy boxes over the speaker felt
+  heavy. Final version keeps the client's own burned-in captions, no new captions. Needed: hold
+  the next clean frame (video only, 3-5 frames) where a cut left a word of the removed line
+  ("HERE.", "IS THAT WE"), start the thumbnail on a crisp caption frame, and an RGBA layer of
+  their caption (alpha = whiteness inside the caption box) drawn over the B&W star so the star
+  doesn't eat the off-body letters. Ask about captions in the first interview from now on.
 - User preferences learned: OK with re-ordering for a stat hook; "no preference" on cuts = take the
   full proposed plan; keep claims exactly as said even if they could read oddly.
 

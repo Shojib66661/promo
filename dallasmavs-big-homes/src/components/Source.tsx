@@ -10,18 +10,20 @@ import {TL} from '../lib/timeline';
 export const SrcFrame: React.FC<{
 	frame: number;
 	cutout?: boolean;
+	/** their burned-in caption only (RGBA), see scripts/caption_layer.py */
+	captions?: boolean;
 	style?: React.CSSProperties;
-}> = ({frame, cutout, style}) => {
+}> = ({frame, cutout, captions, style}) => {
 	// <Freeze> is clamped to the composition length, so freeze on a small
 	// frame number and carry the rest in startFrom.
 	const base = Math.floor(frame / 600) * 600;
 	return (
 	<Freeze frame={frame - base}>
 		<OffthreadVideo
-			src={staticFile(cutout ? 'video/cutout.webm' : 'video/source.mp4')}
+			src={staticFile(captions ? 'video/captions.webm' : cutout ? 'video/cutout.webm' : 'video/source.mp4')}
 			startFrom={base}
 			muted
-			transparent={cutout}
+			transparent={cutout || captions}
 			style={{position: 'absolute', left: 0, top: 0, width: TL.srcWidth, height: TL.srcHeight, ...style}}
 		/>
 	</Freeze>

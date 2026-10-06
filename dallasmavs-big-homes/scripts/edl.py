@@ -76,3 +76,12 @@ PIECE_ZOOM = {
     ('care', 0): 1.12,
     ('signoff', 0): 1.0,
 }
+
+# Their burned-in captions stay (user's call). Where a cut leaves a word of the removed
+# line on screen for a few frames, the video holds the next clean frame instead
+# (audio untouched): source frame -> (frames to hold, source frame to show).
+VIDEO_HOLDS = {
+    1072: (3, 1075),  # first frame = thumbnail: crisp "IT TOOK US" instead of the fade-in
+    59: (3, 62),      # "HERE." from the cut "Lamor here."
+    223: (5, 228),    # "IS THAT WE" from the cut "...is that"
+}

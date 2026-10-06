@@ -12,8 +12,10 @@
   home" (moved from 35.7 s). Cut: opening greeting, 2nd/3rd "we go above and beyond is", "It's going
   to be beautiful", "All in all", final "Peace and love". Kept "It was falling apart" (no clean pause)
   and "we care about the property more than they do" (user: keep as said).
-- **Captions**: covered with navy labels (inpainting smeared on his body). Leak scan: 157 hits outside
-  labels, all our graphics / sky / walls; caption-band sheet every 5 frames clean.
+- **Captions**: v1 covered their captions with navy labels (inpainting smeared on his body); the user
+  rejected the labels. Final: their own burned-in captions, no new captions. Video holds at three cut
+  edges (src 1072→1075 thumbnail, 59→62 "HERE.", 223→228 "IS THAT WE"), and their caption redrawn as
+  an RGBA layer over the B&W star moments (`scripts/caption_layer.py`).
 - **Audio**: vocals separated (UVR), 14 SFX from the library. Music: harun.motion's "Executive Suite"
   (123 BPM, 65 s). It has a short vocal phrase twice, so the UVR instrumental stem is used, starting
   on the beat at 22.37 s so the track's final hit lands at 38.65 s, as he finishes "Dallas Mavericks".

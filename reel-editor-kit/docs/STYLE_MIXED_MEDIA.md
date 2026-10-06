@@ -33,8 +33,8 @@ B&W "underneath" behind him → attic diagram (heat waves on "heat", drops on "m
 → B&W "hydro bill" behind him + bill sticker crossed out → shield on "protect" → logo card
 slides in → 2.8 s end card from the bio only.
 
-## Variant: label captions (Infinite Roofing, 40 s)
-For old captions that can't be removed cleanly. Each chunk on a navy rounded label (white 5 px
+## Variant: label captions (tried on Infinite Roofing, REJECTED by the user as too heavy)
+Kept for reference only; the delivered version kept the client's own captions. Each chunk on a navy rounded label (white 5 px
 edge, hard red 9 px offset, ±0.8° tilt alternating), white Montserrat 800 caps (68 px) + hero
 word in Playfair italic red (112 px, 92 px when long). Upcoming words at 50% (hero 62%).
 Label: centred on the old caption, min size = union of its boxes over the chunk (screen px).

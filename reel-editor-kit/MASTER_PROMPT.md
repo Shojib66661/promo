@@ -41,6 +41,7 @@ my message:
   (`docs/STYLE_PAPER_CUT.md`) and mixed-media cutout + words-behind (`docs/STYLE_MIXED_MEDIA.md`).
   I may send a reference video: look at it (contact sheet) before proposing.
 - **Raw footage**: do I have a version without their burned-in captions? (much cleaner)
+- **Captions**: keep their burned-in captions (graphics work around them) or replace them?
 - **Claims and offers**: anything you'd put on screen that the person didn't literally
   say (e.g. "FREE consultation" when they said "complimentary", prices, guarantees).
   **Ask; never invent.**
@@ -61,12 +62,14 @@ my message:
   CTA over the last line so the end card doesn't make it longer.
 - **No branding from me** on the video (no watermark, no "edited by").
 - **Defaults on every edit** (do what's best, these are always on):
-  - hide the original burned-in captions completely (verify, see §6.4). Thin one-word
-    captions on a static strip: remove them with `tools/clean_captions.py` (temporal fill +
-    inpaint); check a few frames first. Captions that blur/fade over the speaker, or big
-    multi-line ones: cover them (paper-cut caption strips, or mixed-media `LabelCaption`
-    sticker labels sized to the old caption's union box)
-  - new captions in the chosen style, word-timed
+  - captions: **ask first** whether to keep their burned-in captions or replace them. On
+    project 3 the user rejected caption labels ("looks very bad") and chose to keep the
+    client's own captions with no new ones. When keeping them: hold the next clean frame where
+    a cut leaves a word of a removed line on screen, and redraw their caption on top of any
+    graphic that covers the strip (`scripts/caption_layer.py` in the Infinite project).
+    When replacing (verify, see §6.4): thin one-word captions on a static strip →
+    `tools/clean_captions.py`; captions that blur/fade over the speaker can't be removed cleanly.
+  - new captions in the chosen style, word-timed (only if replacing theirs, see above)
   - use **their** brand colours and logo (pull from their profile/end card)
   - new CTA end card with their phone/site/offer from their profile
   - Instagram safe zones: key text outside the top 220 px and bottom 380 px; nothing

@@ -5,7 +5,7 @@ burned-in caption (it was inpainted away; our caption + glow sits over the
 leftover smear), and camera zoom. Plus caption chunks with word timings.
 """
 import json, os, re
-from edl import FPS, SEGMENTS, END_TAIL_FRAMES, END_CARD_WORD, CHUNKS, WORD_FIXES, SHOTS, DISPLAY, PIECE_ZOOM
+from edl import FPS, SEGMENTS, END_TAIL_FRAMES, END_CARD_WORD, CHUNKS, WORD_FIXES, SHOTS, DISPLAY, PIECE_ZOOM, VIDEO_HOLDS
 
 HERE = os.path.dirname(__file__)
 A = os.path.join(HERE, 'analysis')
@@ -93,7 +93,11 @@ for sid, pieces in SEGMENTS:
             if i - 0.12 <= w['s'] < o - 0.1 and w not in kept:
                 kept.append({**w, 'out': max(p['start'], p['start'] + round(w['s'] * FPS) - fi)})
         for f in range(fi, fo):
-            frames.append({'src': f, 'seg': sid, 'piece': len(seg['pieces']) - 1})
+            show = f
+            for k, (n, to) in VIDEO_HOLDS.items():
+                if k <= f < k + n:
+                    show = to
+            frames.append({'src': show, 'seg': sid, 'piece': len(seg['pieces']) - 1})
         out = p['end']
     seg['end'] = out
     segments.append(seg)

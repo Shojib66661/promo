@@ -1,16 +1,16 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
-import {TL, chunkIndexAt, row, toScreen, wordFrame, zoomAt} from './lib/timeline';
+import {TL, row, toScreen, wordFrame, zoomAt} from './lib/timeline';
 import {C, outline, wob} from './lib/brand';
 import {SrcFrame} from './components/Source';
 import {Camera} from './components/Camera';
-import {LabelCaption, ScreenBox} from './components/Caption';
 import {BehindWord, HandTag, Sticker, StarBurst} from './components/Graphics';
 import {Calendar, Checklist, Magnifier, NailIcon, NameTag, NewBadge, PoolIcon, RoofShield, WarningSign} from './components/Stickers';
 import {EndCard} from './components/EndCard';
 
 // ---------------------------------------------------------------------------
 // Beat sheet: every graphic is keyed to the word that triggers it.
+// Their own burned-in captions stay on the video (no new captions).
 // Segments (see scripts/edl.py): hook (field, cold open) -> intro (front yard) ->
 // elite (pool steps) -> pergola -> build (tarp push-up) -> pool -> protect (windows,
 // garage, concrete, landscaping) -> care (field) -> signoff (field) -> end card.
@@ -53,26 +53,6 @@ const BW: BWMoment[] = [
 	{a: BEATS.care - 6, b: seg('care').end, word: 'We care', wordAt: BEATS.care - 6, y: 790, size: 220, star: true},
 ];
 
-const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-/** Union of the old caption's boxes over a whole chunk, in screen px (what the label must cover). */
-const coverCache = new Map<number, ScreenBox | null>();
-const chunkCover = (ci: number): ScreenBox | null => {
-	if (coverCache.has(ci)) return coverCache.get(ci)!;
-	const ch = TL.chunks[ci];
-	let u: ScreenBox | null = null;
-	for (let fr = ch.start; fr < Math.min(ch.end, TL.endCardStart); fr++) {
-		const r = row(fr);
-		if (!r || !r[2]) continue;
-		const z = zoomAt(fr);
-		const a = toScreen(r[2][0], r[2][1], z);
-		const b = toScreen(r[2][2], r[2][3], z);
-		u = u ? {x0: Math.min(u.x0, a.x), y0: Math.min(u.y0, a.y), x1: Math.max(u.x1, b.x), y1: Math.max(u.y1, b.y)} : {x0: a.x, y0: a.y, x1: b.x, y1: b.y};
-	}
-	coverCache.set(ci, u);
-	return u;
-};
-
 export const BigHomes: React.FC = () => {
 	const f = useCurrentFrame();
 	const isEnd = f >= TL.endCardStart;
@@ -99,13 +79,17 @@ export const BigHomes: React.FC = () => {
 						<Camera zoom={zoom} style={{filter: outline(C.white, 5)}}>
 							<SrcFrame frame={src} cutout />
 						</Camera>
+						{/* their own caption back on top of the star + cutout */}
+						<Camera zoom={zoom}>
+							<SrcFrame frame={src} captions style={{filter: 'grayscale(1)'}} />
+						</Camera>
 					</>
 				) : null}
 			</AbsoluteFill>
 		);
 	}
 
-	// ---- graphics (in front of the video, behind the caption) ---------------
+	// ---- graphics (in front of the video) ------------------------------------
 	const fx: React.ReactNode[] = [];
 	const hook = seg('hook');
 	if (inRange(f, BEATS.three - 2, hook.end)) {
@@ -189,17 +173,6 @@ export const BigHomes: React.FC = () => {
 		);
 	}
 
-	// ---- caption: a navy label that always covers the old burned-in caption --
-	let caption: React.ReactNode = null;
-	const ci = chunkIndexAt(f);
-	if (!isEnd && r && ci >= 0) {
-		const chunk = TL.chunks[ci];
-		const hideHero = !!bw && f >= bw.wordAt && chunk.words.some((w) => w.emph && norm(bw.word).includes(norm(w.w)));
-		caption = (
-			<LabelCaption chunk={chunk} index={ci} frame={f} cover={chunkCover(ci)} fallbackY={toScreen(360, 722, zoom).y} hideHero={hideHero} showAll={ci === 0} />
-		);
-	}
-
 	// ---- finish: grain + vignette -------------------------------------------
 	const finish = (
 		<>
@@ -217,7 +190,6 @@ export const BigHomes: React.FC = () => {
 		<AbsoluteFill style={{background: C.navyDeep}}>
 			{scene}
 			{fx}
-			{caption}
 			{finish}
 			{flash}
 		</AbsoluteFill>
