@@ -248,7 +248,7 @@ export const OwnYourPower: React.FC = () => {
 	}
 	if (inRange(f, BEATS.running, SEG.phone.end)) {
 		fx.push(
-			<Sticker key="run" x={330} y={700} local={f - BEATS.running} rot={-8} seed="run" frame={f} edge={false}>
+			<Sticker key="run" x={540} y={350} local={f - BEATS.running} rot={-6} seed="run" frame={f} edge={false} scale={0.8}>
 				<Stamp text="UP & RUNNING" size={62} />
 			</Sticker>,
 		);
